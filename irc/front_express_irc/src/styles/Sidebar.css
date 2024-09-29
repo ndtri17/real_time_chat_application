@@ -1,0 +1,16 @@
+.sidebar {
+    width: 20%;
+    background-color: #2C2F33;
+    padding: 20px;
+    height: 100vh; 
+}
+
+.sidebar-channel {
+    padding-left: 10px ;
+    margin-bottom: 10px;
+}
+
+.sidebar-channel:hover {
+    color: #7289DA;
+    cursor: pointer;
+}

@@ -11,6 +11,7 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const userInfo = { nickname, age, gender, location };
 
     if (!nickname || !age || !gender || !location) {
@@ -19,6 +20,7 @@ const LoginPage = () => {
     }
 
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
     navigate("/chat");
   };
 
@@ -36,8 +38,8 @@ const LoginPage = () => {
               value={nickname}
               onChange={(e) => setNickname(e.target.value)}
               required
-              minLength={3} // Minimum length
-              maxLength={15} // Maximum length
+              minLength={3} 
+              maxLength={15}
             />
           </label>
         </div>

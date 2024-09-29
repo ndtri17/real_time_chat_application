@@ -1,13 +1,3 @@
-body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #5865F2; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .login-page {
     background-color: #23272A;
     color: #ffffff;
@@ -18,8 +8,8 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
+    align-items: center;  
+    justify-content: center; 
 }
 
 .login-title {
@@ -32,7 +22,7 @@ body {
 .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center form items horizontally */
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
