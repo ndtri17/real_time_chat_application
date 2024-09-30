@@ -25,14 +25,18 @@ const io = new Server(server, {
 
 const messages = [];
 const users = [];
+const chanels = [];
 
 io.on('connection', (socket) => {
-    
+
     // Emit previous messages to the newly connected client
     socket.emit('previous_messages', messages);
     
     // Emit the current list of active users
     socket.emit('active_users', users);
+
+    // Emit the current list of channels
+    socket.emit('chanels', chanels);
 
     // Handle setting a nickname for the user
     socket.on('setNickname', (nickname) => {
@@ -44,6 +48,25 @@ io.on('connection', (socket) => {
         messages.push(welcomeMessage); 
         io.emit('message_welcome', welcomeMessage);
         console.log(`${nickname} connected`);
+
+    });
+
+    // Handle new nickname
+    socket.on('modifyNickname', (newNickname) => {
+        const oldNickname = socket.nickname;
+        const userIndex = users.indexOf(oldNickname);
+
+        if (userIndex !== -1) {
+            users[userIndex] = newNickname;
+        }
+
+        socket.nickname = newNickname;
+        io.emit('active_users', users); 
+
+        const message = `${oldNickname} changed their nickname to ${newNickname}`;
+        messages.push(message); 
+        io.emit('message', message);
+        console.log(`${oldNickname} changed their nickname to ${newNickname}`);
     });
 
     // Handle receiving a message
@@ -51,8 +74,20 @@ io.on('connection', (socket) => {
         if (socket.nickname) {
             const formattedMessage = `${socket.nickname}: ${message}`;
             messages.push(formattedMessage);
-            io.emit('message', formattedMessage);
+            io.emit('newNickname', formattedMessage);
             console.log(`${socket.nickname} sent message: ${message}`);
+        }
+    });
+
+    // Handle creating a new channel
+    socket.on('newChannel', (channel) => {
+        if (socket.nickname) {
+            chanels.push(channel);
+            const message = `${socket.nickname} created channel: ${channel}`;
+            messages.push(message); 
+            io.emit('message', message);
+            io.emit('chanels', chanels);
+            console.log(`${socket.nickname} created channel: ${channel}`);
         }
     });
 

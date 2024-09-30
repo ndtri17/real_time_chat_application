@@ -2,15 +2,51 @@
     width: 20%;
     background-color: #2C2F33;
     padding: 20px;
-    height: 100vh; 
+    height: 100vh;
+}
+
+.general, .other-channels, .user {
+    margin-bottom: 20px;
+}
+
+.general h1 {
+    color: #7289DA;
+}
+
+.other-channels h1, .user h1 {
+    color: #7289DA;
 }
 
 .sidebar-channel {
-    padding-left: 10px ;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px 0;
+    color: #99AAB5;
+    border-bottom: 1px solid #40444B;
+    padding-bottom: 5px;
+    transition: background-color 0.3s;
 }
 
 .sidebar-channel:hover {
     color: #7289DA;
+    background-color: #40444B;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.user .sidebar-channel {
+    margin-left: 10px;
+    color: #7289DA;
+}
+
+.user .sidebar-channel:hover {
+    background-color: #3A3E44;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #FFFFFF;
+    margin-bottom: 10px;
 }

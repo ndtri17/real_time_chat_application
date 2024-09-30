@@ -6,6 +6,7 @@
     background-color: #23272A;
     border-radius: 10px;
     overflow: hidden;
+    margin: auto;
 }
 
 .content {
@@ -22,6 +23,7 @@
     overflow-y: auto;
     padding-bottom: 20px;
     border-bottom: 1px solid #7289DA;
+    scroll-behavior: smooth;
 }
 
 .message {
@@ -38,15 +40,44 @@
     margin: 10px 0; 
   }
 
-.home-page input {
-    width: calc(100% - 40px);
-    font-size: 16px;
+  .input-container {
+    display: flex;
+    align-items: center;
     padding: 10px;
-    color: #99AAB5;
+    border-top: 1px solid #7289DA;
+  }
+
+  .input-container input {
+    width: calc(100% - 40px);
+    padding: 15px;
+    color: #FFFFFF;
     border-radius: 5px;
-    box-sizing: border-box;
-    align-self: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-top: 30px;
+    background-color: #40444B;
+    border: 1px solid #99AAB5;
+    outline: none;
+}
+
+.input-container button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 8px;
+    color: #7289DA;
+    transition: color 0.3s;
+}
+
+.input-container button:hover {
+    color: #99AAB5;
+}
+
+.emoji-picker {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    z-index: 10;
+    background-color: #2C2F33;
+    border: 1px solid #7289DA;
+    border-radius: 10px;
+    padding: 5px;
 }
