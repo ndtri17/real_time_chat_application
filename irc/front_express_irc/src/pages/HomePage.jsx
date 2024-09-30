@@ -1,6 +1,7 @@
 import Sidebar from "../components /Sidebar.jsx";
 import "../styles/HomePage.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import Picker from "emoji-picker-react";
 
@@ -10,6 +11,8 @@ const HomePage = () => {
   const [messages, setMessages] = useState([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newSocket = io("http://localhost:8000");
@@ -109,6 +112,15 @@ const HomePage = () => {
         alert("Unknown command");
     }
   };
+
+  useEffect(() => {
+    if (socket) { 
+        socket.on("logout", () => {
+          localStorage.removeItem("userInfo");
+          navigate("/");
+        });
+    } 
+  }, [socket, navigate]);
 
   const handleEmojiClick = (emoji) => {
     setMessage(message + emoji.emoji);
